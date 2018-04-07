@@ -9,8 +9,8 @@
     </h:head>
     <h:body>
         <h:outputStylesheet library="css" name="styles.css"/>
-        <h2>Enter your Information</h2>
-        <h:form id="customerForm">
+
+        <h:form id="userForm">
             <h:messages/>
             <h:panelGrid columns="2"
                          columnClasses="rightAlign,leftAlign">
@@ -34,20 +34,20 @@
                 </h:inputText>
                 <h:outputLabel for="password1" value="Password1">
                 </h:outputLabel>
-                <h:inputText id="password1" 
+                <h:inputSecret id="password1" 
                              label="password1" 
                              value="#{user.password1}">
                     <f:validateLength minimum="3" maximum="10">
                     </f:validateLength>
-                </h:inputText>
+                </h:inputSecret>
                 <h:outputLabel for="password2" value="Password2">
                 </h:outputLabel>
-                <h:inputText id="password2" 
+                <h:inputSecret id="password2" 
                              label="password2" 
                              value="#{user.password2}">
                     <f:validateLength minimum="3" maximum="10">
                     </f:validateLength>
-                </h:inputText>
+                </h:inputSecret>
                 <h:panelGroup></h:panelGroup>
                 <h:commandButton action="singUpUser" value="Register">
                 </h:commandButton>

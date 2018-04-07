@@ -5,7 +5,7 @@
  */
 package com.charlie.tellajoke.jsf;
 
-import javax.faces.bean.RequestScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 /**
