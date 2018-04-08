@@ -6,9 +6,20 @@
 package com.charlie.tellajoke.jsf.customval;
 
 /**
- *
+ * Used to validate a password
+ * 
  * @author charlie
  */
 public class PasswordValidator {
     
+    
+    public static boolean isPassword(final String password) 
+   { 
+      if (password != null) 
+      { 
+         return password.matches("^[a-zA-Z0-9!@#$%^&*\\s\\(\\)_\\+=-]{8,}$"); 
+      } 
+ 
+      return false; 
+   } 
 }

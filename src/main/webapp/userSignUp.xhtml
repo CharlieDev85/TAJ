@@ -37,17 +37,16 @@
                              label="password1" 
                              value="#{user.password1}"
                              required="true">
-                    <f:validateLength minimum="5" maximum="10">
-                    </f:validateLength>
+                    <f:validator validatorId="passwordValidator" />
+
                 </h:inputSecret>
                 <h:outputLabel for="password2" value="Password2">
                 </h:outputLabel>
                 <h:inputSecret id="password2" 
                              label="password2" 
                              value="#{user.password2}"
-                             required="true">
-                    <f:validateLength minimum="5" maximum="10">
-                    </f:validateLength>
+                             required="true">           
+                    <f:validator validatorId="passwordValidator" />
                 </h:inputSecret>
                 <h:panelGroup></h:panelGroup>
                 <h:commandButton action="saveNewUser" value="Register">
