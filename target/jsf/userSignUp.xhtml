@@ -11,7 +11,8 @@
         <h:outputStylesheet library="css" name="styles.css"/>
 
         <h:form id="userForm">
-            <h:messages/>
+            <h2>Enter your information:</h2>
+            
             <h:panelGrid columns="2"
                          columnClasses="rightAlign,leftAlign">
                 <h:outputLabel for="username" value="UserName:">
@@ -19,9 +20,9 @@
                 <h:inputText id="username"
                              label="UserName"
                              value="#{user.username}"
-                             required="true">
-                    <f:validateLength minimum="2" maximum="30">
-                    </f:validateLength>
+                             required="true"
+                             validator="#{alphanumericValidator.validateAlphanumeric}">                    
+                    <f:validateLength minimum="2" maximum="30"></f:validateLength>
                 </h:inputText>
                 <h:outputLabel for="email" value="E-mail:">
                 </h:outputLabel>
@@ -47,11 +48,16 @@
                              value="#{user.password2}"
                              required="true">           
                     <f:validator validatorId="passwordValidator" />
+                    
                 </h:inputSecret>
+
                 <h:panelGroup></h:panelGroup>
                 <h:commandButton action="saveNewUser" value="Register">
                 </h:commandButton>
             </h:panelGrid>
+            
+            <h:messages styleClass="errorMsg"/>
+            
         </h:form>
     </h:body>
 </html>

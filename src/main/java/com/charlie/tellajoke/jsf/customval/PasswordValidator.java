@@ -12,14 +12,23 @@ package com.charlie.tellajoke.jsf.customval;
  */
 public class PasswordValidator {
     
-    
+    /**
+     * It checks weather a password is valid or not.
+     * 
+     * @param password 
+     * @return 
+     */
     public static boolean isPassword(final String password) 
    { 
       if (password != null) 
       { 
-         return password.matches("^[a-zA-Z0-9!@#$%^&*\\s\\(\\)_\\+=-]{8,}$"); 
+         return password.matches("^[a-zA-Z0-9!@#$%^&*\\(\\)_\\+=-]{8,}$"); 
       } 
  
       return false; 
    } 
+    
+    public static boolean passwordConfirmed(String password1, String password2){
+        return password1.equals(password2);
+    }
 }
