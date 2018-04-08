@@ -1,1 +1,4 @@
 /home/charlie/MyProjects/TellAJoke/src/main/java/com/charlie/tellajoke/jsf/User.java
+/home/charlie/MyProjects/TellAJoke/src/main/java/com/charlie/tellajoke/jsf/customval/MyEmailValidator.java
+/home/charlie/MyProjects/TellAJoke/src/main/java/com/charlie/tellajoke/jsf/customval/PasswordValidator.java
+/home/charlie/MyProjects/TellAJoke/src/main/java/com/charlie/tellajoke/jsf/customval/MyPasswordValidator.java

@@ -29,27 +29,28 @@
                              label="E-mail"
                              value="#{user.email}"
                              required="true">
-                    <f:validateLength minimum="2" maximum="30">
-                    </f:validateLength>
+                    <f:validator validatorId="emailValidator" />
                 </h:inputText>
                 <h:outputLabel for="password1" value="Password1">
                 </h:outputLabel>
                 <h:inputSecret id="password1" 
                              label="password1" 
-                             value="#{user.password1}">
-                    <f:validateLength minimum="3" maximum="10">
+                             value="#{user.password1}"
+                             required="true">
+                    <f:validateLength minimum="5" maximum="10">
                     </f:validateLength>
                 </h:inputSecret>
                 <h:outputLabel for="password2" value="Password2">
                 </h:outputLabel>
                 <h:inputSecret id="password2" 
                              label="password2" 
-                             value="#{user.password2}">
-                    <f:validateLength minimum="3" maximum="10">
+                             value="#{user.password2}"
+                             required="true">
+                    <f:validateLength minimum="5" maximum="10">
                     </f:validateLength>
                 </h:inputSecret>
                 <h:panelGroup></h:panelGroup>
-                <h:commandButton action="singUpUser" value="Register">
+                <h:commandButton action="saveNewUser" value="Register">
                 </h:commandButton>
             </h:panelGrid>
         </h:form>
