@@ -33,6 +33,15 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.6</version>
         </dependency>
+        
+        <!--for JPA-->
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-web-api</artifactId>
+            <version>8.0</version>
+            <scope>provided</scope>
+        </dependency>
+        
     </dependencies>
 
     <build>
