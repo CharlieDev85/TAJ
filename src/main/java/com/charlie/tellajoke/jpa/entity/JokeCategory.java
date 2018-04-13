@@ -4,6 +4,8 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -18,11 +20,13 @@ public class JokeCategory implements Serializable {
     @Column(name = "JOKE_CATEGORY_ID")
     private Long jokeCategoryId;
 
-    @Column(name = "JOKE_ID")
-    private Long jokeId;
+    @ManyToOne
+    @JoinColumn(name="JOKE_ID")
+    private Joke joke;
 
-    @Column(name = "CATEGORY_ID")
-    private Long categoryId;
+    @ManyToOne
+    @JoinColumn(name="CATEGORY_ID")
+    private Category category;
 
     public Long getJokeCategoryId() {
         return jokeCategoryId;
@@ -32,20 +36,21 @@ public class JokeCategory implements Serializable {
         this.jokeCategoryId = jokeCategoryId;
     }
 
-    public Long getJokeId() {
-        return jokeId;
+    public Joke getJoke() {
+        return joke;
     }
 
-    public void setJokeId(Long jokeId) {
-        this.jokeId = jokeId;
+    public void setJoke(Joke joke) {
+        this.joke = joke;
     }
 
-    public Long getCategoryId() {
-        return categoryId;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategoryId(Long categoryId) {
-        this.categoryId = categoryId;
+    public void setCategory(Category category) {
+        this.category = category;
     }
+
 
 }

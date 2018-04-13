@@ -1,9 +1,11 @@
 package com.charlie.tellajoke.jpa.entity;
 
 import java.io.Serializable;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -20,6 +22,9 @@ public class Rating implements Serializable {
 
     @Column(name = "RATING_VALUE")
     private int ratingValue;
+    
+    @OneToMany(mappedBy="rating")
+    private Set<UserRatingUserJoke> userRatingsUserJokes;
 
     public Long getRatingId() {
         return ratingId;
@@ -35,6 +40,14 @@ public class Rating implements Serializable {
 
     public void setRatingValue(int ratingValue) {
         this.ratingValue = ratingValue;
+    }
+
+    public Set<UserRatingUserJoke> getUserRatingsUserJokes() {
+        return userRatingsUserJokes;
+    }
+
+    public void setUserRatingsUserJokes(Set<UserRatingUserJoke> userRatingsUserJokes) {
+        this.userRatingsUserJokes = userRatingsUserJokes;
     }
 
 }

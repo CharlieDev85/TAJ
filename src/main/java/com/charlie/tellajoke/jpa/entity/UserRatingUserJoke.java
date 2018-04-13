@@ -1,9 +1,12 @@
 package com.charlie.tellajoke.jpa.entity;
 
+
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -18,14 +21,17 @@ public class UserRatingUserJoke implements Serializable {
     @Column(name = "USERRATING_USERJOKE_ID")
     private Long userRatingUserJokeId;
 
-    @Column(name = "USER_ID")
-    private Long userId;
-
-    @Column(name = "RATING_ID")
-    private Long ratingId;
-
-    @Column(name = "USER_JOKE_ID")
-    private Long userJokeId;
+    @ManyToOne
+    @JoinColumn(name="USERTAJ_ID")
+    private UserTaj userTaj;
+    
+    @ManyToOne
+    @JoinColumn(name="RATING_ID")
+    private Rating rating;
+    
+    @ManyToOne
+    @JoinColumn(name="USER_JOKE_ID")
+    private UserJoke userJoke;
 
     public Long getUserRatingUserJokeId() {
         return userRatingUserJokeId;
@@ -35,28 +41,30 @@ public class UserRatingUserJoke implements Serializable {
         this.userRatingUserJokeId = userRatingUserJokeId;
     }
 
-    public Long getUserId() {
-        return userId;
+    public UserTaj getUserTaj() {
+        return userTaj;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUserTaj(UserTaj userTaj) {
+        this.userTaj = userTaj;
     }
 
-    public Long getRatingId() {
-        return ratingId;
+    public Rating getRating() {
+        return rating;
     }
 
-    public void setRatingId(Long ratingId) {
-        this.ratingId = ratingId;
+    public void setRating(Rating rating) {
+        this.rating = rating;
     }
 
-    public Long getUserJokeId() {
-        return userJokeId;
+    public UserJoke getUserJoke() {
+        return userJoke;
     }
 
-    public void setUserJokeId(Long userJokeId) {
-        this.userJokeId = userJokeId;
+    public void setUserJoke(UserJoke userJoke) {
+        this.userJoke = userJoke;
     }
+    
 
+    
 }
