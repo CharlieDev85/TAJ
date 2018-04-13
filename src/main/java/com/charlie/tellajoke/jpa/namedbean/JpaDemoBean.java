@@ -17,6 +17,7 @@ import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
 import com.charlie.tellajoke.jpa.entity.Type;
+import com.charlie.tellajoke.jpa.entity.UserTaj;
 
 /**
  *
@@ -34,25 +35,28 @@ public class JpaDemoBean {
     
     public String updateDatabase(){
         String retval = "confirmation";
+        Type type;
+        UserTaj userTaj = new UserTaj();
+        userTaj.setUserTajId(1L);
+        userTaj.setUsername("kike");
+        userTaj.setEmail("kike@gmail.com");
+        userTaj.setPassword("mypass");
         
-        Type type1 = new Type();
-        type1.setTypeId(1L);
-        type1.setTypeName("Regular");
+        UserTaj userTaj2 = new UserTaj();
+        userTaj2.setUserTajId(2L);
+        userTaj2.setUsername("kike55");
+        userTaj2.setEmail("kikeasdf@gmail.com");
+        userTaj2.setPassword("mypassff");
         
-        Type type2 = new Type();
-        type2.setTypeId(2L);
-        type2.setTypeName("Administrator");
         
-        Type type3;
-        
+            
         try{
             userTransaction.begin();
-            entityManager.persist(type1);
-            entityManager.persist(type2);
-//            type3 = entityManager.find(Type.class, 2L);
-//            type3.setTypeName("Admin");
-//            entityManager.persist(type2);
-//            entityManager.remove(type1);
+            type = entityManager.find(Type.class, 1L);
+            userTaj.setType(type);
+            userTaj2.setType(type);
+            entityManager.persist(userTaj);
+            entityManager.persist(userTaj2);
             userTransaction.commit();
         }
         catch(HeuristicMixedException |

@@ -1,10 +1,13 @@
 package com.charlie.tellajoke.jpa.entity;
 
 import java.io.Serializable;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 
 /**
  *
@@ -20,6 +23,9 @@ public class Type implements Serializable {
     
     @Column(name="TYPE_NAME")
     private String typeName;
+    
+    @OneToMany(mappedBy="type")
+    private Set<UserTaj> usersTaj;
 
     public Long getTypeId() {
         return typeId;
@@ -36,8 +42,14 @@ public class Type implements Serializable {
     public void setTypeName(String typeName) {
         this.typeName = typeName;
     }
-    
-    
-    
 
+    public Set<UserTaj> getUsersTaj() {
+        return usersTaj;
+    }
+
+    public void setUsersTaj(Set<UserTaj> usersTaj) {
+        this.usersTaj = usersTaj;
+    }
+
+    
 }
