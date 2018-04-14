@@ -1,10 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.charlie.tellajoke.jpa.namedbean;
 
+import com.charlie.tellajoke.jpa.entity.Category;
+import com.charlie.tellajoke.jpa.entity.Joke;
+import com.charlie.tellajoke.jpa.entity.JokeCategory;
 import javax.annotation.Resource;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
@@ -16,8 +14,6 @@ import javax.transaction.NotSupportedException;
 import javax.transaction.RollbackException;
 import javax.transaction.SystemException;
 import javax.transaction.UserTransaction;
-import com.charlie.tellajoke.jpa.entity.Type;
-import com.charlie.tellajoke.jpa.entity.UserTaj;
 
 /**
  *
@@ -35,28 +31,31 @@ public class JpaDemoBean {
     
     public String updateDatabase(){
         String retval = "confirmation";
-        Type type;
-        UserTaj userTaj = new UserTaj();
-        userTaj.setUserTajId(1L);
-        userTaj.setUsername("kike");
-        userTaj.setEmail("kike@gmail.com");
-        userTaj.setPassword("mypass");
         
-        UserTaj userTaj2 = new UserTaj();
-        userTaj2.setUserTajId(2L);
-        userTaj2.setUsername("kike55");
-        userTaj2.setEmail("kikeasdf@gmail.com");
-        userTaj2.setPassword("mypassff");
-        
-        
-            
+        Category category1;
+        Category category2;
+        Joke joke;
+        JokeCategory jokeCategory1 = new JokeCategory();
+        JokeCategory jokeCategory2 = new JokeCategory();
+         
         try{
+            
+                   
             userTransaction.begin();
-            type = entityManager.find(Type.class, 1L);
-            userTaj.setType(type);
-            userTaj2.setType(type);
-            entityManager.persist(userTaj);
-            entityManager.persist(userTaj2);
+            
+            category1 = entityManager.find(Category.class, 1L);
+            category2 = entityManager.find(Category.class, 2L);
+            joke = entityManager.find(Joke.class, 1L);
+            
+            jokeCategory1.setCategory(category1);
+            jokeCategory1.setJoke(joke);
+            
+            jokeCategory2.setCategory(category2);
+            jokeCategory2.setJoke(joke);
+            
+            entityManager.persist(jokeCategory1);
+            entityManager.persist(jokeCategory2);
+
             userTransaction.commit();
         }
         catch(HeuristicMixedException |
