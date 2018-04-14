@@ -1,8 +1,6 @@
 package com.charlie.tellajoke.jpa.namedbean;
 
-import com.charlie.tellajoke.jpa.entity.Category;
-import com.charlie.tellajoke.jpa.entity.Joke;
-import com.charlie.tellajoke.jpa.entity.JokeCategory;
+import com.charlie.tellajoke.jpa.entity.Rating;
 import javax.annotation.Resource;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
@@ -30,32 +28,14 @@ public class JpaDemoBean {
     private UserTransaction userTransaction;
     
     public String updateDatabase(){
-        String retval = "confirmation";
         
-        Category category1;
-        Category category2;
-        Joke joke;
-        JokeCategory jokeCategory1 = new JokeCategory();
-        JokeCategory jokeCategory2 = new JokeCategory();
-         
+        String retval = "confirmation";
+        Rating rating = new Rating();
+        rating.setRatingValue(1);
+        
         try{
-            
-                   
             userTransaction.begin();
-            
-            category1 = entityManager.find(Category.class, 1L);
-            category2 = entityManager.find(Category.class, 2L);
-            joke = entityManager.find(Joke.class, 1L);
-            
-            jokeCategory1.setCategory(category1);
-            jokeCategory1.setJoke(joke);
-            
-            jokeCategory2.setCategory(category2);
-            jokeCategory2.setJoke(joke);
-            
-            entityManager.persist(jokeCategory1);
-            entityManager.persist(jokeCategory2);
-
+            entityManager.persist(rating);
             userTransaction.commit();
         }
         catch(HeuristicMixedException |

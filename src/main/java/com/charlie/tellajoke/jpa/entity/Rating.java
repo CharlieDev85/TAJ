@@ -20,7 +20,7 @@ public class Rating implements Serializable {
     @Column(name = "RATING_ID")
     private Long ratingId;
 
-    @Column(name = "RATING_VALUE")
+    @Column(name = "RATING_NUM")
     private int ratingValue;
     
     @OneToMany(mappedBy="rating")
