@@ -1,17 +1,15 @@
 package com.charlie.tellajoke.jpa.namedbean;
 
-import com.charlie.tellajoke.jpa.entity.Rating;
+import com.charlie.tellajoke.jpa.entity.UserJoke;
+import com.charlie.tellajoke.jpa.entity.UserTaj;
+import com.charlie.tellajoke.jpa.entity.Joke;
+
 import javax.annotation.Resource;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.HeuristicMixedException;
-import javax.transaction.HeuristicRollbackException;
-import javax.transaction.NotSupportedException;
-import javax.transaction.RollbackException;
-import javax.transaction.SystemException;
-import javax.transaction.UserTransaction;
+import javax.transaction.*;
 
 /**
  *
@@ -28,14 +26,19 @@ public class JpaDemoBean {
     private UserTransaction userTransaction;
     
     public String updateDatabase(){
-        
         String retval = "confirmation";
-        Rating rating = new Rating();
-        rating.setRatingValue(1);
+        UserTaj userTaj;
+        Joke joke;
+        UserJoke userJoke;
+        userJoke = new UserJoke();
         
         try{
             userTransaction.begin();
-            entityManager.persist(rating);
+            userTaj = entityManager.find(UserTaj.class, 1L);
+            joke = entityManager.find(Joke.class, 1L);
+            userJoke.setUserTaj(userTaj);
+            userJoke.setJoke(joke);/
+            entityManager.persist(userJoke);
             userTransaction.commit();
         }
         catch(HeuristicMixedException |
