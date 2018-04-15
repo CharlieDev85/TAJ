@@ -1,5 +1,5 @@
 
-package com.charlie.tellajoke.jsf.customval;
+package com.charlie.tellajoke.jsfjpa.customval;
 
 
 import javax.faces.application.FacesMessage;

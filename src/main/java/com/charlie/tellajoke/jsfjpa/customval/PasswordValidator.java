@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.charlie.tellajoke.jsf.customval;
+package com.charlie.tellajoke.jsfjpa.customval;
 
 /**
  * Used to validate a password

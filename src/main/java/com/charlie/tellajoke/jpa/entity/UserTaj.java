@@ -2,6 +2,8 @@ package com.charlie.tellajoke.jpa.entity;
 
 import java.io.Serializable;
 import java.util.Set;
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -14,6 +16,7 @@ import javax.persistence.Table;
  *
  * @author charlie
  */
+
 @Entity
 @Table(name = "USERTAJ")
 public class UserTaj implements Serializable {
