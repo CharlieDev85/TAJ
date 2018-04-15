@@ -14,11 +14,11 @@ import javax.persistence.Table;
  * @author charlie
  */
 @Entity
-@Table(name = "USERRATING_USERJOKE")
+@Table(name = "USER_RATING_USERJOKE")
 public class UserRatingUserJoke implements Serializable {
 
     @Id
-    @Column(name = "USERRATING_USERJOKE_ID")
+    @Column(name = "USER_RATING_USERJOKE_ID")
     private Long userRatingUserJokeId;
 
     @ManyToOne
