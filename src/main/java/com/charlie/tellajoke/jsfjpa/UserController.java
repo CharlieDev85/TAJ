@@ -97,4 +97,6 @@ public class UserController implements Serializable {
     public void setType(Type type) {
         this.type = type;
     }
+
+
 }

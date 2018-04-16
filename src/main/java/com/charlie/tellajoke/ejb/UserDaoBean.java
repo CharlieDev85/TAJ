@@ -6,6 +6,8 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
 
 @Stateful
 @LocalBean
@@ -15,32 +17,10 @@ public class UserDaoBean implements UserDao {
 
     @PersistenceContext
     private EntityManager entityManager;
-    private String[] registeredUsernames;
-
 
     @Override
     public boolean alreadyExists(String username) {
-
-        registeredUsernames = new String[10];
-        registeredUsernames[0] = "charlie";
-        registeredUsernames[1] = "charlie8";
-        registeredUsernames[2] = "kike8";
-        registeredUsernames[3] = "marroq";
-        registeredUsernames[4] = "marroq8";
-        registeredUsernames[5] = "developer";
-        registeredUsernames[6] = "developer8";
-        registeredUsernames[7] = "coder8";
-        registeredUsernames[8] = "coder";
-        registeredUsernames[9] = "regularuser";
-
-        boolean contains = false;
-        for (String registeredUsername : registeredUsernames) {
-            if (registeredUsername.equals(username)) {
-                contains = true;
-                return contains;
-            }
-        }
-        return contains;
+        return this.foundActiveUser(username);
     }
 
     @Override
@@ -58,6 +38,31 @@ public class UserDaoBean implements UserDao {
 
     }
 
+
+    public  boolean foundActiveUser(String usrnm) {
+           boolean found = false;
+        String username;
+
+        try {
+            Query query = entityManager.createQuery(
+                            "SELECT u.username FROM UserTaj AS u WHERE u.username "
+                                    + "= :name");
+
+            query.setParameter("name", usrnm);
+
+            username = (String)query.getSingleResult();
+            if(!username.isEmpty()){
+                found = true;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            //System.out.println("user is: " + userFound.getUsername());
+            //return found;
+        }
+        return found;
+    }
+
     public String getUsernameMessage(String username) {
         String usernameMessage = "that is OK";
         //System.out.println("username.length is: " + username.length());
@@ -71,5 +76,9 @@ public class UserDaoBean implements UserDao {
         return usernameMessage;
     }
 
+//    public static void main(String[] args) {
+//        UserDaoBean test = new UserDaoBean();
+//        System.out.println("result is " + test.foundActiveUser("kike"));
+//    }
 
 }

@@ -12,4 +12,5 @@ public interface UserDao {
     public UserTaj getUserTaj(Long customerId);
     public void deleteUserTaj(UserTaj customer);
 
+
 }
