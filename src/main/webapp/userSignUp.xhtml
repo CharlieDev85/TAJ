@@ -59,12 +59,13 @@
                 </h:inputSecret>
 
                 <h:panelGroup></h:panelGroup>
-                <h:commandButton action="saveNewUser" value="Register">
+                <h:commandButton  actionListener="#{arbitraryMessageController.usernameError}" value="Register">
+                    <f:ajax render="messages"/>
                 </h:commandButton>
             </h:panelGrid>
             
-            <h:messages styleClass="errorMsg"/>
-            
+            <h:messages styleClass="errorMsg" id="messages"/>
+
         </h:form>
     </h:body>
 </html>
