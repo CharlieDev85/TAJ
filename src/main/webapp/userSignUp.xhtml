@@ -59,8 +59,8 @@
                 </h:inputSecret>
 
                 <h:panelGroup></h:panelGroup>
-                <h:commandButton  actionListener="#{arbitraryMessageController.usernameError}" value="Register">
-                    <f:ajax render="messages"/>
+                <h:commandButton  action="#{userController.btnSaveNewUserPressed()}" value="Register">
+
                 </h:commandButton>
             </h:panelGrid>
             

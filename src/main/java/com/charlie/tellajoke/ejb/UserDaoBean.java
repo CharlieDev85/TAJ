@@ -24,17 +24,17 @@ public class UserDaoBean implements UserDao {
     }
 
     @Override
-    public void saveUserTaj(UserTaj customer) {
-
+    public void saveUserTaj(UserTaj userTaj) {
+        entityManager.persist(userTaj);
     }
 
     @Override
-    public UserTaj getUserTaj(Long customerId) {
+    public UserTaj getUserTaj(Long userTajId) {
         return null;
     }
 
     @Override
-    public void deleteUserTaj(UserTaj customer) {
+    public void deleteUserTaj(UserTaj userTaj) {
 
     }
 
@@ -76,9 +76,5 @@ public class UserDaoBean implements UserDao {
         return usernameMessage;
     }
 
-//    public static void main(String[] args) {
-//        UserDaoBean test = new UserDaoBean();
-//        System.out.println("result is " + test.foundActiveUser("kike"));
-//    }
 
 }

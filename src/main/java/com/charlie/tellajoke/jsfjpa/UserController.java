@@ -40,6 +40,32 @@ public class UserController implements Serializable {
         username = "";
     }
 
+    public String btnSaveNewUserPressed(){
+        String retVal = "confirmation";
+        password1=getPassword1();
+        password2=getPassword2();
+        if(!passwordsMatches()){
+            retVal = "error";
+            return retVal;
+        }
+        populateUserTaj();
+        userDaoBean.saveUserTaj(this.userTaj);
+        return retVal;
+    }
+
+    private void populateUserTaj() {
+        userTaj.setUsername(getUsername());
+        userTaj.setEmail(getEmail());
+        userTaj.setPassword(getPassword1());
+        Type type = new Type();
+        type.setTypeId(2L);
+        userTaj.setType(type);
+    }
+
+    private boolean passwordsMatches() {
+        return password1.equals(password2);
+    }
+
     public String getUsernameMessage(){
         this.usernameMessage = userDaoBean.getUsernameMessage(this.username);
           return this.usernameMessage;
